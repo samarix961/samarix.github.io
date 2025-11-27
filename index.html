@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samarix Core — Official Release Hub</title>
+  <title>Samarix Core</title>
   <style>
+    /* General Page Settings */
     body {
-        background: #000;
-        color: #ccc;
+        background: #080808; /* Very dark grey, almost black */
+        color: #e0e0e0; /* Soft white for general text */
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -15,119 +16,156 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        font-family: 'Courier New', Courier, monospace;
-        background: radial-gradient(circle at center, #001122 0%, #000 80%);
-        overflow: hidden;
+        font-family: 'Courier New', Courier, monospace; /* Tech font */
     }
 
-    /* عنوان اصلی با انیمیشن نفس کشیدن آرام */
+    /* Main Logo with Pulsing Animation */
     h1 {
-        font-size: 6.5em;
+        font-size: 4em;
         margin: 0;
-        letter-spacing: 12px;
-        background: linear-gradient(90deg, #00ff88, #00ffff, #0088ff);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-        animation: breathe 6s ease-in-out infinite;
+        letter-spacing: 6px;
+        color: #00e5ff; /* Cyber Blue */
+        animation: pulse-glow 3s infinite ease-in-out; /* Smooth breathing effect */
     }
 
-    @keyframes breathe {
-        0%   { opacity: 0.8; text-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
-        50%  { opacity: 1;   text-shadow: 0 0 50px rgba(0, 255, 255, 0.8), 0 0 80px rgba(0, 255, 136, 0.6); }
-        100% { opacity: 0.8; text-shadow: 0 0 30px rgba(0, 255, 255, 0.5); }
-    }
-
-    /* خوش‌آمدگویی */
-    .welcome {
-        font-size: 1.4em;
-        letter-spacing: 8px;
+    /* Status Message */
+    .status-msg {
+        font-size: 0.9em;
+        margin-top: 20px;
         margin-bottom: 50px;
-        color: #00ffff;
-        text-shadow: 0 0 15px #00ffff;
+        color: #ffffff;
+        opacity: 0.7;
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+        padding: 10px 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
 
-    /* دکمه‌ها */
+    /* Green dot for "Online" status */
+    .dot {
+        height: 10px;
+        width: 10px;
+        background-color: #00ff41;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 8px;
+        box-shadow: 0 0 8px #00ff41;
+    }
+
+    /* Button Container */
     .btn-container {
         display: flex;
         flex-direction: column;
-        gap: 25px;
-        width: 380px;
+        gap: 20px;
+        width: 100%;
+        max-width: 320px;
     }
 
+    /* Primary Button: Download (Cyber Blue) */
     .download-btn {
-        background: linear-gradient(45deg, #004400, #008844);
-        color: #fff;
-        padding: 18px 0;
-        font-size: 1.3em;
-        font-weight: bold;
-        letter-spacing: 3px;
-        border: 2px solid #00ff41;
-        border-radius: 6px;
+        color: #080808;
+        background: #00e5ff;
         text-decoration: none;
-        box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
-        transition: all 0.4s;
+        padding: 16px 0;
+        font-weight: 900;
+        font-size: 1.1em;
+        border-radius: 6px;
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+        transition: all 0.3s ease;
+        display: block;
+        border: 2px solid #00e5ff;
     }
     .download-btn:hover {
-        background: linear-gradient(45deg, #00ff41, #00cc33);
-        box-shadow: 0 0 50px rgba(0, 255, 65, 0.8);
-        transform: translateY(-4px);
+        background: transparent;
+        color: #00e5ff;
+        box-shadow: 0 0 35px rgba(0, 229, 255, 0.6);
+        transform: scale(1.03);
+        cursor: pointer;
     }
 
+    /* Secondary Button: Repository (Minimal White) */
     .repo-btn {
-        color: #88aaff;
-        border: 1px solid #4455aa;
-        background: rgba(68, 85, 170, 0.1);
-        padding: 14px 0;
-        font-size: 1em;
+        color: #bbb;
+        background: transparent;
         text-decoration: none;
+        padding: 14px 0;
+        font-weight: normal;
+        font-size: 0.95em;
         border-radius: 6px;
-        transition: all 0.3s;
+        border: 1px solid #444;
+        transition: 0.3s;
+        display: block;
     }
     .repo-btn:hover {
-        background: rgba(0, 136, 255, 0.2);
-        color: #00ffff;
-        border-color: #00ffff;
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        border-color: #fff;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
 
-    /* فوتر */
+    /* Footer / Contact Section */
     .footer {
-        position: absolute;
-        bottom: 30px;
-        font-size: 0.85em;
-        color: #006666;
-        letter-spacing: 1px;
+        margin-top: 70px;
+        font-size: 0.8em;
+        color: #555;
+        line-height: 1.6;
     }
-    .footer a {
-        color: #00aaaa;
+    
+    .email-link {
+        color: #777;
         text-decoration: none;
+        border-bottom: 1px dotted #555;
+        transition: 0.3s;
     }
-    .footer a:hover {
-        color: #00ffff;
+    .email-link:hover {
+        color: #00e5ff;
+        border-bottom: 1px solid #00e5ff;
+    }
+
+    /* Animation Keyframes for Logo */
+    @keyframes pulse-glow {
+        0% {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+            opacity: 0.7;
+        }
+        50% {
+            text-shadow: 0 0 30px rgba(0, 229, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.5);
+            opacity: 1;
+        }
+        100% {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+            opacity: 0.7;
+        }
     }
   </style>
 </head>
 <body>
 
-  <div class="welcome">SYSTEM ONLINE · CONNECTION SECURE</div>
-  
+  <!-- Pulsing Logo -->
   <h1>SAMARIX</h1>
-
+  
+  <!-- Status Bar -->
+  <div class="status-msg">
+      <span class="dot"></span> System Operational
+  </div>
+  
   <div class="btn-container">
-    <a href="./latest.exe" class="download-btn">
-      DOWNLOAD LATEST CORE
-    </a>
+      <!-- Button 1: Auto Download Latest -->
+      <a href="https://github.com/samarix961/samarix961.github.io/releases/latest" class="download-btn">
+         [ DOWNLOAD LATEST CORE ]
+      </a>
 
-    <a href="https://github.com/samarix961/samarix961.github.io" class="repo-btn">
-      MANUAL DOWNLOAD / VIEW SOURCE
-    </a>
+      <!-- Button 2: View Source -->
+      <a href="https://github.com/samarix961/samarix961.github.io" class="repo-btn">
+         > Access Repository <
+      </a>
   </div>
 
+  <!-- Contact Footer -->
   <div class="footer">
-    OFFICIAL RELEASE HUB · ALWAYS UP-TO-DATE<br>
-    Contact: <a href="mailto:samarix963@gmail.com">samarix963@gmail.com</a>
+    OFFICIAL RELEASE HUB<br>
+    Support: <a href="mailto:samarix963@gmail.com" class="email-link">samarix963@gmail.com</a>
   </div>
 
 </body>
