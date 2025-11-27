@@ -1,2 +1,2 @@
-# samarix.github.io
+# samarix961.github.io
 "Official release hub · Always the latest &amp; smartest version of Samarix"
