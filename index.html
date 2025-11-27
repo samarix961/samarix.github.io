@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="fa" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samarix | Next-Gen Connectivity Platform</title>
+  <meta name="description" content="Samarix Core — Intelligent guardian of your digital infrastructure. Automated management, seamless updates, privacy-first design.">
+  <title>Samarix Core | Intelligent Infrastructure Guardian</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
@@ -18,9 +19,10 @@
     }
     
     :root {
-        --primary-gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+        --primary-gradient: linear-gradient(135deg, #00d4ff, #0066ff);
         --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --success-color: #00ff41;
+        --success-color: #00ff88;
+        --warning-color: #ffa726;
         --bg-dark: #050507;
         --bg-card: rgba(255, 255, 255, 0.03);
         --border-color: rgba(255, 255, 255, 0.08);
@@ -30,12 +32,11 @@
     body {
         background-color: var(--bg-dark);
         background-image: 
-            radial-gradient(circle at 20% 50%, rgba(0, 198, 255, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(0, 102, 255, 0.04) 0%, transparent 50%),
             linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
-        background-position: 0 0, 0 0, 0 0, 0 0;
         
         color: #ffffff;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -43,17 +44,15 @@
         line-height: 1.6;
     }
 
-    /* Smooth Scroll */
     html { scroll-behavior: smooth; }
 
-    /* Selection Color */
     ::selection {
-        background: rgba(0, 198, 255, 0.3);
+        background: rgba(0, 212, 255, 0.3);
         color: white;
     }
 
     /* ===============================================
-       NAVBAR - حرفه‌ای با منوی موبایل
+       NAVBAR
     =============================================== */
     .navbar {
         width: 100%;
@@ -95,7 +94,7 @@
         background: var(--success-color);
         border-radius: 50%;
         box-shadow: 0 0 10px var(--success-color);
-        animation: blink 2s infinite;
+        animation: statusBlink 2s infinite;
     }
 
     .nav-links {
@@ -132,7 +131,6 @@
         width: 100%;
     }
 
-    /* Mobile Menu Button */
     .menu-toggle {
         display: none;
         flex-direction: column;
@@ -162,7 +160,7 @@
     }
 
     /* ===============================================
-       HERO SECTION - بخش اصلی
+       HERO SECTION
     =============================================== */
     .hero {
         min-height: 100vh;
@@ -176,23 +174,22 @@
         overflow: hidden;
     }
 
-    /* Floating Particles */
     .particle {
         position: absolute;
         border-radius: 50%;
         pointer-events: none;
-        opacity: 0.15;
-        animation: float 20s infinite;
+        opacity: 0.1;
+        animation: float 25s infinite ease-in-out;
     }
 
     @keyframes float {
         0%, 100% { transform: translateY(0) rotate(0deg); }
-        50% { transform: translateY(-100px) rotate(180deg); }
+        50% { transform: translateY(-120px) rotate(180deg); }
     }
 
     .status-badge {
-        background: rgba(0, 255, 65, 0.08);
-        border: 1px solid rgba(0, 255, 65, 0.3);
+        background: rgba(0, 255, 136, 0.08);
+        border: 1px solid rgba(0, 255, 136, 0.3);
         padding: 8px 20px;
         border-radius: 30px;
         font-family: 'JetBrains Mono', monospace;
@@ -213,9 +210,10 @@
         background: var(--success-color);
         border-radius: 50%;
         box-shadow: 0 0 12px var(--success-color);
-        animation: blink 2s infinite;
+        animation: statusBlink 2s infinite;
     }
 
+    /* SAMARIX با glow آرام و حرفه‌ای */
     h1 {
         font-size: 6.5em;
         line-height: 1;
@@ -226,23 +224,47 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        animation: slideUp 1s ease-out;
+        animation: smoothGlow 4s ease-in-out infinite, slideUp 1s ease-out;
         position: relative;
     }
 
-    h1::after {
-        content: "_";
-        animation: cursorBlink 1s infinite;
-        -webkit-text-fill-color: #00c6ff;
+    /* انیمیشن Glow آرام و نرم */
+    @keyframes smoothGlow {
+        0%, 100% { 
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+            opacity: 0.95;
+        }
+        50% { 
+            filter: drop-shadow(0 0 50px rgba(0, 212, 255, 0.8)) drop-shadow(0 0 80px rgba(0, 102, 255, 0.4));
+            opacity: 1;
+        }
+    }
+
+    .hero-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.95em;
+        color: #00d4ff;
+        margin-bottom: 15px;
+        letter-spacing: 2px;
+        animation: fadeIn 1.2s ease-out;
     }
 
     .subtitle {
-        font-size: 1.3em;
+        font-size: 1.35em;
         color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto 20px;
+        line-height: 1.8;
+        animation: fadeIn 1.2s ease-out;
+    }
+
+    .hero-description {
+        font-size: 1.05em;
+        color: #6b7280;
         max-width: 650px;
         margin: 0 auto 50px;
         line-height: 1.7;
-        animation: fadeIn 1.2s ease-out;
+        animation: fadeIn 1.5s ease-out;
     }
 
     .btn-group {
@@ -250,7 +272,7 @@
         gap: 20px;
         flex-wrap: wrap;
         justify-content: center;
-        animation: fadeIn 1.5s ease-out;
+        animation: fadeIn 1.8s ease-out;
     }
 
     .btn {
@@ -288,13 +310,13 @@
     .btn-primary {
         background: var(--primary-gradient);
         color: #ffffff;
-        box-shadow: 0 10px 40px rgba(0, 198, 255, 0.3);
+        box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
         border: none;
     }
 
     .btn-primary:hover {
         transform: translateY(-3px);
-        box-shadow: 0 15px 50px rgba(0, 198, 255, 0.5);
+        box-shadow: 0 15px 50px rgba(0, 212, 255, 0.5);
     }
 
     .btn-secondary {
@@ -310,8 +332,37 @@
         transform: translateY(-3px);
     }
 
+    .btn-telegram {
+        background: linear-gradient(135deg, #0088cc, #00a8e8);
+        color: #ffffff;
+        border: none;
+        box-shadow: 0 10px 40px rgba(0, 136, 204, 0.3);
+    }
+
+    .btn-telegram:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 50px rgba(0, 136, 204, 0.5);
+    }
+
+    /* Beta Badge */
+    .beta-notice {
+        background: rgba(255, 167, 38, 0.1);
+        border: 1px solid rgba(255, 167, 38, 0.3);
+        color: var(--warning-color);
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 0.9em;
+        margin-top: 30px;
+        display: inline-block;
+        animation: fadeIn 2s ease-out;
+    }
+
+    .beta-notice strong {
+        color: #ffb84d;
+    }
+
     /* ===============================================
-       STATS SECTION - آمار و ارقام
+       STATS SECTION
     =============================================== */
     .stats-section {
         padding: 80px 5%;
@@ -340,16 +391,13 @@
     .stat-item:hover {
         transform: translateY(-5px);
         background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(0, 198, 255, 0.3);
+        border-color: rgba(0, 212, 255, 0.3);
     }
 
-    .stat-number {
-        font-size: 3em;
-        font-weight: 800;
-        background: var(--primary-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 10px;
+    .stat-icon {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+        filter: drop-shadow(0 0 10px currentColor);
     }
 
     .stat-label {
@@ -357,10 +405,18 @@
         font-size: 0.95em;
         text-transform: uppercase;
         letter-spacing: 1px;
+        margin-top: 10px;
+    }
+
+    .stat-value {
+        font-size: 1.3em;
+        font-weight: 700;
+        color: #00d4ff;
+        margin-top: 5px;
     }
 
     /* ===============================================
-       FEATURES SECTION - ویژگی‌ها
+       FEATURES SECTION
     =============================================== */
     .features-section {
         padding: 100px 5%;
@@ -374,7 +430,7 @@
     }
 
     .section-tag {
-        color: #00c6ff;
+        color: #00d4ff;
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.85em;
         text-transform: uppercase;
@@ -394,11 +450,12 @@
         font-size: 1.15em;
         max-width: 600px;
         margin: 0 auto;
+        line-height: 1.7;
     }
 
     .features-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 30px;
     }
 
@@ -431,8 +488,8 @@
 
     .feature-card:hover {
         transform: translateY(-10px);
-        border-color: rgba(0, 198, 255, 0.4);
-        box-shadow: 0 20px 60px rgba(0, 198, 255, 0.15);
+        border-color: rgba(0, 212, 255, 0.4);
+        box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
     }
 
     .feature-icon {
@@ -471,7 +528,7 @@
     }
 
     /* ===============================================
-       TECH STACK SECTION
+       TECH STACK
     =============================================== */
     .tech-section {
         padding: 100px 5%;
@@ -484,7 +541,7 @@
         flex-wrap: wrap;
         gap: 20px;
         justify-content: center;
-        max-width: 900px;
+        max-width: 1000px;
         margin: 0 auto;
     }
 
@@ -502,99 +559,74 @@
 
     .tech-badge:hover {
         background: rgba(255, 255, 255, 0.08);
-        border-color: #00c6ff;
-        color: #00c6ff;
+        border-color: #00d4ff;
+        color: #00d4ff;
         transform: translateY(-2px);
     }
 
     /* ===============================================
-       PRICING / PLANS SECTION
+       LEGAL SECTION
     =============================================== */
-    .pricing-section {
+    .legal-section {
         padding: 100px 5%;
         max-width: 1200px;
         margin: 0 auto;
     }
 
-    .pricing-grid {
+    .legal-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
-        margin-top: 60px;
+        margin-top: 50px;
     }
 
-    .pricing-card {
+    .legal-card {
         background: var(--bg-card);
-        border: 1.5px solid var(--border-color);
-        border-radius: 24px;
-        padding: 45px 35px;
-        text-align: center;
-        transition: all 0.4s;
-        position: relative;
-    }
-
-    .pricing-card.featured {
-        border-color: #00c6ff;
-        background: rgba(0, 198, 255, 0.05);
-        transform: scale(1.05);
-    }
-
-    .pricing-card.featured::before {
-        content: "POPULAR";
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--primary-gradient);
-        padding: 5px 20px;
+        border: 1px solid var(--border-color);
         border-radius: 20px;
-        font-size: 0.7em;
-        font-weight: 700;
-        letter-spacing: 1px;
+        padding: 35px;
+        transition: all 0.3s;
     }
 
-    .pricing-card:hover {
-        transform: translateY(-10px);
-        border-color: rgba(0, 198, 255, 0.5);
+    .legal-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 212, 255, 0.3);
+        background: rgba(255, 255, 255, 0.05);
     }
 
-    .plan-name {
-        font-size: 1.3em;
-        font-weight: 700;
+    .legal-card h3 {
+        font-size: 1.4em;
         margin-bottom: 15px;
-        color: #00c6ff;
-    }
-
-    .plan-price {
-        font-size: 3em;
-        font-weight: 800;
-        margin-bottom: 10px;
-    }
-
-    .plan-price span {
-        font-size: 0.4em;
-        color: var(--text-muted);
-    }
-
-    .plan-features {
-        list-style: none;
-        margin: 30px 0;
-        text-align: left;
-    }
-
-    .plan-features li {
-        padding: 12px 0;
-        color: var(--text-muted);
+        color: #00d4ff;
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
-    .plan-features li::before {
-        content: "✓";
+    .legal-card p {
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+
+    .legal-card ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .legal-card ul li {
+        padding: 8px 0;
+        color: var(--text-muted);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.95em;
+    }
+
+    .legal-card ul li::before {
+        content: "→";
         color: var(--success-color);
         font-weight: bold;
-        font-size: 1.2em;
     }
 
     /* ===============================================
@@ -616,7 +648,7 @@
     }
 
     .faq-item:hover {
-        border-color: rgba(0, 198, 255, 0.3);
+        border-color: rgba(0, 212, 255, 0.3);
     }
 
     .faq-question {
@@ -654,13 +686,13 @@
     }
 
     /* ===============================================
-       CTA SECTION - Call To Action
+       CTA SECTION
     =============================================== */
     .cta-section {
         padding: 120px 5%;
         text-align: center;
         background: 
-            radial-gradient(circle at center, rgba(0, 198, 255, 0.1) 0%, transparent 70%),
+            radial-gradient(circle at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%),
             var(--bg-dark);
         border-top: 1px solid var(--border-color);
         position: relative;
@@ -675,7 +707,7 @@
         width: 200%;
         height: 200%;
         background: 
-            repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 198, 255, 0.03) 2px, rgba(0, 198, 255, 0.03) 4px);
+            repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.03) 2px, rgba(0, 212, 255, 0.03) 4px);
         animation: scan 15s linear infinite;
         pointer-events: none;
     }
@@ -727,7 +759,7 @@
     .footer-section h3 {
         margin-bottom: 20px;
         font-size: 1.1em;
-        color: #00c6ff;
+        color: #00d4ff;
     }
 
     .footer-section p,
@@ -741,7 +773,7 @@
     }
 
     .footer-section a:hover {
-        color: #00c6ff;
+        color: #00d4ff;
         padding-left: 5px;
     }
 
@@ -808,18 +840,13 @@
         to { opacity: 1; }
     }
 
-    @keyframes blink {
+    @keyframes statusBlink {
         0%, 100% { opacity: 1; }
         50% { opacity: 0.3; }
     }
 
-    @keyframes cursorBlink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-
     /* ===============================================
-       RESPONSIVE DESIGN
+       RESPONSIVE
     =============================================== */
     @media (max-width: 968px) {
         h1 { font-size: 4em; }
@@ -854,10 +881,6 @@
         .menu-toggle {
             display: flex;
         }
-
-        .pricing-card.featured {
-            transform: scale(1);
-        }
     }
 
     @media (max-width: 640px) {
@@ -865,7 +888,6 @@
         .subtitle { font-size: 1.1em; }
         .btn-group { flex-direction: column; width: 100%; }
         .btn { width: 100%; justify-content: center; }
-        .stat-number { font-size: 2.5em; }
     }
   </style>
 </head>
@@ -875,12 +897,12 @@
        NAVBAR
   ============================================= -->
   <nav class="navbar" id="navbar">
-      <a href="#" class="nav-logo">SAMARIX</a>
+      <a href="#" class="nav-logo">SAMARIX CORE</a>
       
       <div class="nav-links" id="navLinks">
           <a href="#features">Features</a>
           <a href="#technology">Technology</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#legal">Privacy & Legal</a>
           <a href="#faq">FAQ</a>
           <a href="https://github.com/samarix961/samarix961.github.io">GitHub</a>
           <a href="mailto:samarix963@gmail.com">Contact</a>
@@ -899,19 +921,26 @@
   <section class="hero">
       
       <!-- Floating Particles -->
-      <div class="particle" style="width: 300px; height: 300px; top: 10%; left: 5%; background: radial-gradient(circle, rgba(0,198,255,0.1), transparent);"></div>
-      <div class="particle" style="width: 200px; height: 200px; top: 60%; right: 10%; background: radial-gradient(circle, rgba(118,75,162,0.1), transparent); animation-delay: -5s;"></div>
+      <div class="particle" style="width: 350px; height: 350px; top: 5%; left: 5%; background: radial-gradient(circle, rgba(0,212,255,0.08), transparent);"></div>
+      <div class="particle" style="width: 250px; height: 250px; top: 55%; right: 8%; background: radial-gradient(circle, rgba(0,102,255,0.06), transparent); animation-delay: -7s;"></div>
 
       <div class="status-badge">
           <span class="status-dot"></span>
-          SYSTEM OPERATIONAL
+          VERSION 3.0.0 BETA — OPERATIONAL
       </div>
+
+      <div class="hero-tag">/// INTELLIGENT GUARDIAN</div>
 
       <h1>SAMARIX</h1>
       
       <p class="subtitle">
-          Enterprise-grade secure connectivity architecture built for the modern web.<br>
-          Lightning-fast, rock-solid, completely open source.
+          🛡️ Protector of code, creator of security and order<br>
+          ⚡ Intelligent technological guardian combining wisdom with advanced automation
+      </p>
+
+      <p class="hero-description">
+          Automated user management engine with seamless, manifest-driven updates.<br>
+          Real-time connectivity optimization. Privacy-first design. Zero PII by default.
       </p>
 
       <div class="btn-group">
@@ -919,7 +948,14 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
               </svg>
-              DOWNLOAD v2.1.0
+              DOWNLOAD v3.0.0 BETA
+          </a>
+          
+          <a href="https://t.me/+S9yyvDubnf83NWQ0" class="btn btn-telegram" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+              </svg>
+              JOIN UPDATES CHANNEL
           </a>
           
           <a href="https://github.com/samarix961/samarix961.github.io" class="btn btn-secondary">
@@ -930,6 +966,10 @@
           </a>
       </div>
 
+      <div class="beta-notice">
+          <strong>🎁 BETA ACCESS:</strong> Free for early adopters. Future versions may require subscription.
+      </div>
+
   </section>
 
   <!-- ============================================
@@ -938,20 +978,24 @@
   <section class="stats-section">
       <div class="stats-grid">
           <div class="stat-item">
-              <div class="stat-number">99.9%</div>
-              <div class="stat-label">Uptime</div>
+              <div class="stat-icon">🤖</div>
+              <div class="stat-label">Automation Level</div>
+              <div class="stat-value">Fully Autonomous</div>
           </div>
           <div class="stat-item">
-              <div class="stat-number">50K+</div>
-              <div class="stat-label">Active Users</div>
+              <div class="stat-icon">🔒</div>
+              <div class="stat-label">Privacy Model</div>
+              <div class="stat-value">Zero PII</div>
           </div>
           <div class="stat-item">
-              <div class="stat-number">150+</div>
-              <div class="stat-label">Countries</div>
+              <div class="stat-icon">⚡</div>
+              <div class="stat-label">Update System</div>
+              <div class="stat-value">Manifest-Driven</div>
           </div>
           <div class="stat-item">
-              <div class="stat-number">24/7</div>
-              <div class="stat-label">Support</div>
+              <div class="stat-icon">🛡️</div>
+              <div class="stat-label">Fallback Strategy</div>
+              <div class="stat-value">Graceful & Robust</div>
           </div>
       </div>
   </section>
@@ -961,10 +1005,10 @@
   ============================================= -->
   <section class="features-section" id="features">
       <div class="section-header">
-          <div class="section-tag">/// CAPABILITIES</div>
-          <h2 class="section-title">Built for Performance</h2>
+          <div class="section-tag">/// CORE CAPABILITIES</div>
+          <h2 class="section-title">Intelligent by Design</h2>
           <p class="section-description">
-              Every feature engineered with security, speed, and reliability at its core.
+              Every component engineered for automation, reliability, and user privacy.
           </p>
       </div>
 
@@ -972,135 +1016,153 @@
           
           <div class="feature-card">
               <div class="feature-icon">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/></svg>
+              </div>
+              <h3>Automated User Orchestration</h3>
+              <p>Self-managing user and device lifecycle. Add, remove, optimize—completely hands-free with intelligent decision-making.</p>
+          </div>
+
+          <div class="feature-card">
+              <div class="feature-icon">
+                  <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <h3>Seamless Updates</h3>
+              <p>Manifest-driven update system. Silent, atomic deployments with rollback safety. Always current, never interrupted.</p>
+          </div>
+
+          <div class="feature-card">
+              <div class="feature-icon">
                   <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
-              <h3>Military-Grade Encryption</h3>
-              <p>AES-256 encryption with perfect forward secrecy. Your data stays yours, always.</p>
-          </div>
-
-          <div class="feature-card">
-              <div class="feature-icon">
-                  <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
-              <h3>Lightning Fast</h3>
-              <p>Optimized routing protocols deliver speeds up to 10x faster than legacy solutions.</p>
-          </div>
-
-          <div class="feature-card">
-              <div class="feature-icon">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <h3>Zero Logging</h3>
-              <p>We don't track, collect, or store any of your activity. Ever. Verified by independent audits.</p>
-          </div>
-
-          <div class="feature-card">
-              <div class="feature-icon">
-                  <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              </div>
-              <h3>Multi-Platform</h3>
-              <p>Seamless experience across Windows, macOS, Linux, iOS, and Android.</p>
+              <h3>Privacy-First Architecture</h3>
+              <p>Zero PII collection by default. Optional telemetry is anonymous, aggregate-only, and fully transparent. Your data stays yours.</p>
           </div>
 
           <div class="feature-card">
               <div class="feature-icon">
                   <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               </div>
-              <h3>99.9% Uptime</h3>
-              <p>Redundant infrastructure across 50+ global servers ensures always-on connectivity.</p>
+              <h3>Real-Time Optimization</h3>
+              <p>Dynamic connectivity tuning based on network conditions. Intelligent routing with graceful degradation and fallback strategies.</p>
           </div>
 
           <div class="feature-card">
               <div class="feature-icon">
-                  <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
               </div>
-              <h3>Open Source</h3>
-              <p>Fully transparent codebase. Audit it, fork it, contribute to it. Community-driven development.</p>
+              <h3>Offline-Friendly Design</h3>
+              <p>Smart caching, queue management, and offline operation support. Works reliably even when connectivity is unstable.</p>
+          </div>
+
+          <div class="feature-card">
+              <div class="feature-icon">
+                  <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <h3>Future-Proof & Modular</h3>
+              <p>Clean separation of concerns, environment-driven config, extensible architecture. Built to evolve with your needs.</p>
           </div>
 
       </div>
   </section>
 
   <!-- ============================================
-       TECH STACK SECTION
+       TECH STACK
   ============================================= -->
   <section class="tech-section" id="technology">
       <div class="section-header">
-          <div class="section-tag">/// TECHNOLOGY</div>
-          <h2 class="section-title">Powered By Modern Stack</h2>
+          <div class="section-tag">/// TECHNOLOGY FOUNDATION</div>
+          <h2 class="section-title">Built on Modern Stack</h2>
           <p class="section-description">
-              Built with cutting-edge technologies for maximum performance and security.
+              Powered by industry-leading frameworks and libraries for maximum performance, security, and reliability.
           </p>
       </div>
 
       <div class="tech-grid">
-          <div class="tech-badge">WireGuard Protocol</div>
-          <div class="tech-badge">OpenVPN</div>
-          <div class="tech-badge">Shadowsocks</div>
-          <div class="tech-badge">V2Ray Core</div>
-          <div class="tech-badge">Nginx</div>
-          <div class="tech-badge">Docker</div>
-          <div class="tech-badge">Kubernetes</div>
-          <div class="tech-badge">PostgreSQL</div>
-          <div class="tech-badge">Redis</div>
-          <div class="tech-badge">Rust Backend</div>
-          <div class="tech-badge">Go Services</div>
-          <div class="tech-badge">React Native</div>
+          <div class="tech-badge">.NET Runtime</div>
+          <div class="tech-badge">Avalonia UI</div>
+          <div class="tech-badge">ReactiveUI</div>
+          <div class="tech-badge">Newtonsoft.Json</div>
+          <div class="tech-badge">HTTPS Transport</div>
+          <div class="tech-badge">Manifest System</div>
+          <div class="tech-badge">Environment Config</div>
+          <div class="tech-badge">Async/Await Patterns</div>
+          <div class="tech-badge">Dependency Injection</div>
+          <div class="tech-badge">Modular Architecture</div>
       </div>
   </section>
 
   <!-- ============================================
-       PRICING SECTION
+       LEGAL & PRIVACY SECTION
   ============================================= -->
-  <section class="pricing-section" id="pricing">
+  <section class="legal-section" id="legal">
       <div class="section-header">
-          <div class="section-tag">/// PLANS</div>
-          <h2 class="section-title">Choose Your Plan</h2>
+          <div class="section-tag">/// TRANSPARENCY & TRUST</div>
+          <h2 class="section-title">Privacy & Legal Framework</h2>
           <p class="section-description">
-              Flexible options for individuals and teams. All plans include core features.
+              Built on principles of transparency, user rights, and responsible data handling.
           </p>
       </div>
 
-      <div class="pricing-grid">
+      <div class="legal-grid">
           
-          <div class="pricing-card">
-              <div class="plan-name">Free</div>
-              <div class="plan-price">$0<span>/month</span></div>
-              <ul class="plan-features">
-                  <li>1 Device</li>
-                  <li>10 GB Bandwidth</li>
-                  <li>Basic Servers</li>
-                  <li>Community Support</li>
+          <div class="legal-card">
+              <h3>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  Privacy Policy
+              </h3>
+              <p>Your privacy is paramount. Samarix is designed with privacy-first principles:</p>
+              <ul>
+                  <li>No PII collection by default</li>
+                  <li>No precise geolocation tracking</li>
+                  <li>No raw IP log storage</li>
+                  <li>Optional telemetry is anonymous & aggregate</li>
+                  <li>Third-party endpoints subject to their own policies</li>
               </ul>
-              <a href="#" class="btn btn-secondary" style="width: 100%;">Get Started</a>
+              <a href="#" style="color: #00d4ff; font-weight: 600; text-decoration: none;">Read Full Policy →</a>
           </div>
 
-          <div class="pricing-card featured">
-              <div class="plan-name">Pro</div>
-              <div class="plan-price">$9<span>/month</span></div>
-              <ul class="plan-features">
-                  <li>5 Devices</li>
-                  <li>Unlimited Bandwidth</li>
-                  <li>All Premium Servers</li>
-                  <li>Priority Support</li>
-                  <li>Ad-Blocking</li>
-                  <li>Custom DNS</li>
+          <div class="legal-card">
+              <h3>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                      <polyline points="14 2 14 8 20 8"/>
+                      <line x1="16" y1="13" x2="8" y2="13"/>
+                      <line x1="16" y1="17" x2="8" y2="17"/>
+                      <polyline points="10 9 9 9 8 9"/>
+                  </svg>
+                  Terms of Use
+              </h3>
+              <p>Clear, fair terms for responsible use:</p>
+              <ul>
+                  <li>Client-side application for user-controlled connectivity</li>
+                  <li>User responsible for compliance with laws & third-party terms</li>
+                  <li>No warranty on third-party endpoints</li>
+                  <li>Remote manifest updates for version control</li>
+                  <li>Beta phase currently free; future pricing may apply</li>
               </ul>
-              <a href="#" class="btn btn-primary" style="width: 100%;">Subscribe Now</a>
+              <a href="#" style="color: #00d4ff; font-weight: 600; text-decoration: none;">Read Full Terms →</a>
           </div>
 
-          <div class="pricing-card">
-              <div class="plan-name">Enterprise</div>
-              <div class="plan-price">$49<span>/month</span></div>
-              <ul class="plan-features">
-                  <li>Unlimited Devices</li>
-                  <li>Dedicated Servers</li>
-                  <li>Custom Infrastructure</li>
-                  <li>24/7 Support</li>
-                  <li>SLA Guarantee</li>
-                  <li>Team Management</li>
+          <div class="legal-card">
+              <h3>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="12" y1="8" x2="12" y2="12"/>
+                      <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  Disclaimer
+              </h3>
+              <p>Important notices and limitations:</p>
+              <ul>
+                  <li>Samarix does not host or control third-party endpoints</li>
+                  <li>Use at your own risk; user responsible for legal compliance</li>
+                  <li>No guarantees for third-party availability or security</li>
+                  <li>Network conditions may cause instability or blocking</li>
+                  <li>Beta software; functionality may change</li>
               </ul>
-              <a href="#" class="btn btn-secondary" style="width: 100%;">Contact Sales</a>
+              <a href="#" style="color: #00d4ff; font-weight: 600; text-decoration: none;">Read Full Disclaimer →</a>
           </div>
 
       </div>
@@ -1111,46 +1173,53 @@
   ============================================= -->
   <section class="faq-section" id="faq">
       <div class="section-header">
-          <div class="section-tag">/// FAQ</div>
-          <h2 class="section-title">Common Questions</h2>
+          <div class="section-tag">/// QUESTIONS & ANSWERS</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
           <p class="section-description">
-              Everything you need to know about Samarix.
+              Everything you need to know about Samarix Core.
           </p>
       </div>
 
       <div class="faq-list">
           <div class="faq-item">
-              <div class="faq-question">What makes Samarix different?</div>
+              <div class="faq-question">What exactly does Samarix Core do?</div>
               <div class="faq-answer">
-                  Samarix is built from the ground up with modern protocols, complete transparency through open-source code, and a strict zero-logs policy verified by third-party audits.
+                  Samarix Core is an intelligent engine for automated user/device management and seamless updates. It orchestrates connectivity, optimizes performance in real-time, and handles updates silently via a manifest-driven system—all while prioritizing your privacy with zero PII collection by default.
               </div>
           </div>
 
           <div class="faq-item">
-              <div class="faq-question">Is it really free?</div>
+              <div class="faq-question">Is it really free? What's the catch?</div>
               <div class="faq-answer">
-                  Yes! Our free tier provides 10GB monthly bandwidth with access to basic servers. No credit card required, no hidden fees.
+                  Version 3.0.0 Beta is completely free for early adopters. This is an opportunity to help shape the product. Future releases may transition to a paid or subscription model, but current beta users will receive advance notice and potential grandfathered benefits.
               </div>
           </div>
 
           <div class="faq-item">
-              <div class="faq-question">Which platforms are supported?</div>
+              <div class="faq-question">How does Samarix protect my privacy?</div>
               <div class="faq-answer">
-                  Samarix supports Windows, macOS, Linux, iOS, Android, and can be manually configured on routers and other devices.
+                  By default, Samarix collects zero personally identifiable information (PII). No names, emails, phone numbers, or precise geolocation. Optional telemetry (if you choose to enable it) is anonymous, aggregate-only, and uses minimal events. You're always in control of your data.
               </div>
           </div>
 
           <div class="faq-item">
-              <div class="faq-question">Can I cancel anytime?</div>
+              <div class="faq-question">What platforms are supported?</div>
               <div class="faq-answer">
-                  Absolutely. No contracts, no commitments. Cancel your subscription anytime from your account dashboard.
+                  Samarix Core is built on .NET and Avalonia UI, supporting Windows, macOS, and Linux. Cross-platform compatibility is a core design principle, ensuring consistent experience across all major operating systems.
               </div>
           </div>
 
           <div class="faq-item">
-              <div class="faq-question">Do you offer refunds?</div>
+              <div class="faq-question">How do updates work?</div>
               <div class="faq-answer">
-                  We offer a 30-day money-back guarantee on all paid plans. If you're not satisfied, we'll refund you in full.
+                  Updates are delivered via a secure manifest system. The app checks for updates automatically, downloads them in the background, and applies them seamlessly without disrupting your workflow. Rollback safety and atomic deployments ensure you're always running stable versions.
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <div class="faq-question">Where can I get help or report issues?</div>
+              <div class="faq-answer">
+                  Contact us at <a href="mailto:samarix963@gmail.com" style="color: #00d4ff;">samarix963@gmail.com</a> or join our Telegram updates channel at <a href="https://t.me/+S9yyvDubnf83NWQ0" style="color: #00d4ff;" target="_blank">t.me/+S9yyvDubnf83NWQ0</a>. We're committed to responsive support and community engagement.
               </div>
           </div>
       </div>
@@ -1161,13 +1230,23 @@
   ============================================= -->
   <section class="cta-section">
       <div class="cta-content">
-          <h2 class="cta-title">Ready to Get Started?</h2>
+          <h2 class="cta-title">Join the Beta Program</h2>
           <p class="cta-description">
-              Join thousands of users who trust Samarix for secure, fast, and reliable connectivity.
+              Be among the first to experience next-generation intelligent infrastructure management.<br>
+              Free beta access. Limited time opportunity.
           </p>
           <div class="btn-group">
               <a href="https://github.com/samarix961/samarix961.github.io/releases/latest" class="btn btn-primary">
-                  Download Now - It's Free
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                  </svg>
+                  Download Beta v3.0.0
+              </a>
+              <a href="https://t.me/+S9yyvDubnf83NWQ0" class="btn btn-telegram" target="_blank" rel="noopener">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                  </svg>
+                  Join Updates Channel
               </a>
           </div>
       </div>
@@ -1180,22 +1259,23 @@
       <div class="footer-content">
           
           <div class="footer-section">
-              <h3>Samarix Project</h3>
-              <p>Next-generation connectivity platform built for privacy, speed, and freedom.</p>
+              <h3>Samarix Core</h3>
+              <p>Intelligent technological guardian combining wisdom with advanced automation. Protector of code, creator of security and order.</p>
               <div class="social-links">
-                  <a href="https://github.com/samarix961" title="GitHub">
+                  <a href="https://github.com/samarix961" title="GitHub" target="_blank" rel="noopener">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                       </svg>
                   </a>
-                  <a href="https://twitter.com" title="Twitter">
+                  <a href="https://t.me/+S9yyvDubnf83NWQ0" title="Telegram" target="_blank" rel="noopener">
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                       </svg>
                   </a>
-                  <a href="https://telegram.org" title="Telegram">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.121.099.154.232.17.325.016.093.036.305.02.469z"/>
+                  <a href="mailto:samarix963@gmail.com" title="Email">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                          <polyline points="22,6 12,13 2,6"/>
                       </svg>
                   </a>
               </div>
@@ -1205,30 +1285,33 @@
               <h3>Product</h3>
               <a href="#features">Features</a>
               <a href="#technology">Technology</a>
-              <a href="#pricing">Pricing</a>
               <a href="https://github.com/samarix961/samarix961.github.io/releases">Downloads</a>
+              <a href="https://t.me/+S9yyvDubnf83NWQ0" target="_blank" rel="noopener">Updates Channel</a>
           </div>
 
           <div class="footer-section">
-              <h3>Resources</h3>
-              <a href="#">Documentation</a>
-              <a href="#">API Reference</a>
-              <a href="#">Community</a>
+              <h3>Legal & Privacy</h3>
+              <a href="#legal">Privacy Policy</a>
+              <a href="#legal">Terms of Use</a>
+              <a href="#legal">Disclaimer</a>
+              <a href="#">Third-Party Notices</a>
+          </div>
+
+          <div class="footer-section">
+              <h3>Support</h3>
               <a href="#faq">FAQ</a>
-          </div>
-
-          <div class="footer-section">
-              <h3>Company</h3>
-              <a href="#">About Us</a>
-              <a href="#">Blog</a>
-              <a href="mailto:samarix963@gmail.com">Contact</a>
-              <a href="#">Privacy Policy</a>
+              <a href="mailto:samarix963@gmail.com">Email Support</a>
+              <a href="https://github.com/samarix961/samarix961.github.io">GitHub Repository</a>
+              <a href="#">Documentation</a>
           </div>
 
       </div>
 
       <div class="footer-bottom">
-          <p>&copy; 2025 Samarix Project. Open Source & Secure. Licensed under MIT.</p>
+          <p>&copy; 2025 Samarix Core. Licensed under proprietary license for beta phase.</p>
+          <p style="margin-top: 10px; font-size: 0.85em;">
+              Includes software from Microsoft/.NET Foundation, Avalonia UI, ReactiveUI, Newtonsoft.Json — see Third-Party Notices.
+          </p>
       </div>
   </footer>
 
@@ -1245,7 +1328,6 @@
         navLinks.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking on a link
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
@@ -1269,19 +1351,17 @@
             const faqItem = question.parentElement;
             const isActive = faqItem.classList.contains('active');
             
-            // Close all FAQ items
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.classList.remove('active');
             });
             
-            // Open clicked item if it wasn't active
             if (!isActive) {
                 faqItem.classList.add('active');
             }
         });
     });
 
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -1298,55 +1378,22 @@
         });
     });
 
-    // Number counter animation for stats
-    const animateValue = (element, start, end, duration) => {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const value = Math.floor(progress * (end - start) + start);
-            element.textContent = value.toLocaleString();
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                element.textContent = element.dataset.value;
-            }
-        };
-        window.requestAnimationFrame(step);
-    };
-
-    // Intersection Observer for stats animation
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumbers = entry.target.querySelectorAll('.stat-number');
-                statNumbers.forEach(stat => {
-                    const text = stat.textContent;
-                    const value = text.replace(/[^0-9.]/g, '');
-                    if (!isNaN(value) && value !== '') {
-                        stat.dataset.value = text;
-                        animateValue(stat, 0, parseFloat(value), 2000);
-                    }
-                });
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    const statsSection = document.querySelector('.stats-section');
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
-
-    // Parallax effect for hero particles
+    // Parallax effect for particles
+    let ticking = false;
     window.addEventListener('mousemove', (e) => {
-        const particles = document.querySelectorAll('.particle');
-        particles.forEach((particle, index) => {
-            const speed = (index + 1) * 0.02;
-            const x = (window.innerWidth - e.pageX * speed) / 100;
-            const y = (window.innerHeight - e.pageY * speed) / 100;
-            particle.style.transform = `translateX(${x}px) translateY(${y}px)`;
-        });
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const particles = document.querySelectorAll('.particle');
+                particles.forEach((particle, index) => {
+                    const speed = (index + 1) * 0.015;
+                    const x = (window.innerWidth - e.pageX * speed) / 90;
+                    const y = (window.innerHeight - e.pageY * speed) / 90;
+                    particle.style.transform = `translateX(${x}px) translateY(${y}px)`;
+                });
+                ticking = false;
+            });
+            ticking = true;
+        }
     });
   </script>
 
